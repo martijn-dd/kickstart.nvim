@@ -9,6 +9,23 @@ return {
         markdown = { 'markdownlint' },
       }
 
+      local eslint = require('lint').linters.eslint
+
+    local phpstan = require('lint').linters.phpstan
+    phpstan.args = {
+      'analyze',
+      '--error-format=json',
+      '--no-progress',
+      '--memory-limit=1G',
+    }
+
+    require('lint').linters_by_ft = {
+      php = {
+        'php',
+        'phpstan',
+      },
+    }
+
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
       -- lint.linters_by_ft = lint.linters_by_ft or {}
