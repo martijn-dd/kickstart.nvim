@@ -329,8 +329,8 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-      { "nvim-telescope/telescope-live-grep-args.nvim" },
+      { 'nvim-tree/nvim-web-devicons', enabled = true },
+      { 'nvim-telescope/telescope-live-grep-args.nvim' },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -359,16 +359,16 @@ require('lazy').setup({
         --  All the info you're looking for is in `:help telescope.setup()`
         --
         defaults = {
-            preview = {
-                treesitter = false,
-                timeout = 250,
-            },
+          preview = {
+            treesitter = false,
+            timeout = 250,
+          },
           mappings = {
             i = {
-                ['<C-d>'] = require('telescope.actions').delete_buffer,
-            }
+              ['<C-d>'] = require('telescope.actions').delete_buffer,
+            },
           },
-          layout_strategy = "vertical",
+          layout_strategy = 'vertical',
         },
         -- pickers = {}
         extensions = {
@@ -592,49 +592,63 @@ require('lazy').setup({
         --
 
         tsserver = {},
-        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        html = { filetypes = { 'html', 'hbs' } },
         cssls = {},
-        intelephense = {
-            intelephense = {
-            files = {
-                maxSize = 5000000,
-                exclude = {
-                "**/.git/**",
-                "**/.svn/**",
-                "**/.hg/**",
-                "**/CVS/**",
-                "**/.DS_Store/**",
-                "**/node_modules/**",
-                "**/bower_components/**",
-                "**/vendor/**/{Tests,tests}/**",
-                "**/.history/**",
-                "**/var/cache/**",
-                "**/vendor/[abcefghjklmnopqrstuvwxyz]*",
-                "**/vendor/d[abcdefghjklmnopqrstvwxyz]*",
-                "**/vendor/dutchdrops/vendor/**",
-                }
-            },
-            rename = {
-                exclude = {
-                "**/vendor/[abcefghjklmnopqrstuvwxyz]*",
-                "**/vendor/d[abcdefghjklmnopqrstvwxyz]*",
-                "**/vendor/dutchdrops/**/vendor/**",
-                }
-            },
-            references = {
-                exclude = {
-                "**/vendor/[abcefghjklmnopqrstuvwxyz]*",
-                "**/vendor/d[abcdefghjklmnopqrstvwxyz]*",
-                "**/vendor/dutchdrops/**/vendor/**",
-                }
-            }
-            }
-        },
+        phpactor = {},
+        -- intelephense = {
+        --   intelephense = {
+        --     files = {
+        --       maxSize = 5000000,
+        --       exclude = {
+        --         '**/.git/**',
+        --         '**/.svn/**',
+        --         '**/.hg/**',
+        --         '**/CVS/**',
+        --         '**/.DS_Store/**',
+        --         '**/node_modules/**',
+        --         '**/bower_components/**',
+        --         '**/vendor/**/{Tests,tests}/**',
+        --         '**/.history/**',
+        --         '**/var/cache/**',
+        --         '**/vendor/[abcefghjklmnopqrstuvwxyz]**',
+        --         '**/vendor/d[abcdefghjklmnopqrstvwxyz]**',
+        --         '**/vendor/dutchdrops/vendor/**',
+        --       },
+        --     },
+        --     rename = {
+        --       exclude = {
+        --         '**/vendor/[abcefghjklmnopqrstuvwxyz]**',
+        --         '**/vendor/d[abcdefghjklmnopqrstvwxyz]**',
+        --         '**/vendor/dutchdrops/**/vendor/**',
+        --       },
+        --     },
+        --     references = {
+        --       exclude = {
+        --         '**/vendor/[abcefghjklmnopqrstuvwxyz]**',
+        --         '**/vendor/d[abcdefghjklmnopqrstvwxyz]**',
+        --         '**/vendor/dutchdrops/**/vendor/**',
+        --       },
+        --     },
+        --   },
+        -- },
         jsonls = {},
         vuels = {},
         emmet_language_server = {
-            filetypes = { "css", "eruby", "html", "twig", "javascript", "javascriptreact", "less", "sass", "scss", "svelte",
-            "pug", "typescriptreact", "vue" },
+          filetypes = {
+            'css',
+            'eruby',
+            'html',
+            'twig',
+            'javascript',
+            'javascriptreact',
+            'less',
+            'sass',
+            'scss',
+            'svelte',
+            'pug',
+            'typescriptreact',
+            'vue',
+          },
         },
         lemminx = {},
         yamlls = {},
@@ -790,7 +804,7 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<CR>'] = cmp.mapping.confirm { select = true },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
@@ -845,8 +859,8 @@ require('lazy').setup({
     --   -- Load the colorscheme here.
     --   -- Like many other themes, this one has different styles, and you could load
     --   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-    --   vim.cmd.colorscheme 'tokyonight-night'
-
+    --   vim.cmd.colorscheme 'tokyonight-storm'
+    --
     --   -- You can configure highlights by doing something like:
     --   vim.cmd.hi 'Comment gui=none'
     -- end,
@@ -969,7 +983,7 @@ require('lazy').setup({
   },
 })
 
-require('user.options')
+require 'user.options'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

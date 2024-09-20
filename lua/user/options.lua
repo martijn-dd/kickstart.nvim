@@ -41,8 +41,15 @@ vim.o.hlsearch = true
 vim.cmd 'set nospell'
 
 -- vim.api.nvim_create_autocmd('ColorScheme', {
---     pattern = 'habamax',
---     command = 'hi Normal guibg=#112a2a'
+--   pattern = 'habamax',
+--   command = 'hi Normal guibg=#112a2a',
 -- })
 --
 -- vim.cmd.colorscheme 'habamax'
+
+-- vim.api.nvim_create_autocmd('ColorScheme', {
+--   pattern = 'default',
+--   command = 'hi Normal guibg=#112a2a',
+-- })
+--
+-- vim.cmd.colorscheme 'desert'
