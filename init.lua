@@ -631,46 +631,47 @@ require('lazy').setup({
         -- ts_ls = {},
         --
 
-        tsserver = {},
+        ts_ls = {},
         html = { filetypes = { 'html', 'hbs' } },
         cssls = {},
-        phpactor = {},
-        -- intelephense = {
-        --   intelephense = {
-        --     files = {
-        --       maxSize = 5000000,
-        --       exclude = {
-        --         '**/.git/**',
-        --         '**/.svn/**',
-        --         '**/.hg/**',
-        --         '**/CVS/**',
-        --         '**/.DS_Store/**',
-        --         '**/node_modules/**',
-        --         '**/bower_components/**',
-        --         '**/vendor/**/{Tests,tests}/**',
-        --         '**/.history/**',
-        --         '**/var/cache/**',
-        --         '**/vendor/[abcefghjklmnopqrstuvwxyz]**',
-        --         '**/vendor/d[abcdefghjklmnopqrstvwxyz]**',
-        --         '**/vendor/dutchdrops/vendor/**',
-        --       },
-        --     },
-        --     rename = {
-        --       exclude = {
-        --         '**/vendor/[abcefghjklmnopqrstuvwxyz]**',
-        --         '**/vendor/d[abcdefghjklmnopqrstvwxyz]**',
-        --         '**/vendor/dutchdrops/**/vendor/**',
-        --       },
-        --     },
-        --     references = {
-        --       exclude = {
-        --         '**/vendor/[abcefghjklmnopqrstuvwxyz]**',
-        --         '**/vendor/d[abcdefghjklmnopqrstvwxyz]**',
-        --         '**/vendor/dutchdrops/**/vendor/**',
-        --       },
-        --     },
-        --   },
-        -- },
+        intelephense = {
+          settings = {
+            intelephense = {
+              files = {
+                maxSize = 5000000,
+                exclude = {
+                  '**/.git/**',
+                  '**/.svn/**',
+                  '**/.hg/**',
+                  '**/CVS/**',
+                  '**/.DS_Store/**',
+                  '**/node_modules/**',
+                  '**/bower_components/**',
+                  '**/vendor/**/{Tests,tests}/**',
+                  '**/.history/**',
+                  '**/var/cache/**',
+                  '**/vendor/[abcefghjklmnopqrstuvwxyz]*',
+                  '**/vendor/d[abcdefghjklmnopqrstvwxyz]*',
+                  '**/vendor/dutchdrops/vendor/**',
+                },
+              },
+              rename = {
+                exclude = {
+                  '**/vendor/[abcefghjklmnopqrstuvwxyz]*',
+                  '**/vendor/d[abcdefghjklmnopqrstvwxyz]*',
+                  '**/vendor/dutchdrops/**/vendor/**',
+                },
+              },
+              references = {
+                exclude = {
+                  '**/vendor/[abcefghjklmnopqrstuvwxyz]*',
+                  '**/vendor/d[abcdefghjklmnopqrstvwxyz]*',
+                  '**/vendor/dutchdrops/**/vendor/**',
+                },
+              },
+            },
+          },
+        },
         jsonls = {},
         vuels = {},
         emmet_language_server = {
@@ -756,22 +757,23 @@ require('lazy').setup({
     },
     opts = {
       notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        local lsp_format_opt
-        if disable_filetypes[vim.bo[bufnr].filetype] then
-          lsp_format_opt = 'never'
-        else
-          lsp_format_opt = 'fallback'
-        end
-        return {
-          timeout_ms = 500,
-          lsp_format = lsp_format_opt,
-        }
-      end,
+      format_on_save = nil,
+      -- format_on_save = function(bufnr)
+      --   -- Disable "format_on_save lsp_fallback" for languages that don't
+      --   -- have a well standardized coding style. You can add additional
+      --   -- languages here or re-enable it for the disabled ones.
+      --   local disable_filetypes = { c = true, cpp = true }
+      --   local lsp_format_opt
+      --   if disable_filetypes[vim.bo[bufnr].filetype] then
+      --     lsp_format_opt = 'never'
+      --   else
+      --     lsp_format_opt = 'fallback'
+      --   end
+      --   return {
+      --     timeout_ms = 500,
+      --     lsp_format = lsp_format_opt,
+      --   }
+      -- end,
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
